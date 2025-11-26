@@ -36,8 +36,51 @@
 
                 prezzo[i] = P;
             }
-        }
 
+            Console.WriteLine("Il valore del magazzino è: " + valoreMagazzino(Quantità, Nprodotti, prezzo));
+
+            Console.WriteLine("Dimmi una soglia");
+            int soglia = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("I prodotti con quantità inferiore alla soglia inserita sono " + Soglia(Quantità, Nprodotti, prodotti, soglia));
+        }
+        static double valoreMagazzino(int[] Quantità,  int Nprodotti, double[] prezzo)
+        {
+            double valore = 0;
+
+            for(int i = 0; i < Nprodotti; i++)
+            {
+                valore = Quantità[i] * prezzo[i];
+            }
+
+            return valore;
+        }
+        static string[] Soglia(int[] Quantità, int Nprodotti, string[] prodotti, int soglia)
+        {
+            string[] Soglia;
+            int a = 0;
+
+            for(int i = 0; i < Nprodotti; i++)
+            {
+                if(soglia > Quantità[i])
+                {
+                    a++;
+                }
+            }
+
+            Soglia = new string[a];
+
+            for (int i = 0; i < a; i++)
+            {
+                if (soglia > Quantità[i])
+                {
+                    Soglia[i] = prodotti[i];
+                }
+            }
+
+            return Soglia;
+        }
+ 
 
         static void Main(string[] args)
         {
@@ -45,6 +88,7 @@
             int Nprodotti = Convert.ToInt32(Console.ReadLine());
 
             InserimentoProdotti(Nprodotti);
+
         }
     }
 }
