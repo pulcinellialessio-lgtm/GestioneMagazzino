@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static void InserimentoProdotti(int Nprodotti)
+        static void InserimentoProdotti(int Nprodotti)   // input dati
         {
             string[] prodotti = new string[Nprodotti];
 
@@ -42,9 +42,9 @@
             Console.WriteLine("Dimmi una soglia");
             int soglia = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("I prodotti con quantità inferiore alla soglia inserita sono " + Soglia(Quantità, Nprodotti, prodotti, soglia));
+            Soglia(Quantità, Nprodotti, prodotti, soglia);
         }
-        static double valoreMagazzino(int[] Quantità,  int Nprodotti, double[] prezzo)
+        static double valoreMagazzino(int[] Quantità,  int Nprodotti, double[] prezzo)  // valore magazzino
         {
             double valore = 0;
 
@@ -55,9 +55,8 @@
 
             return valore;
         }
-        static string[] Soglia(int[] Quantità, int Nprodotti, string[] prodotti, int soglia)
-        {
-            string[] Soglia;
+        static void Soglia(int[] Quantità, int Nprodotti, string[] prodotti, int soglia)  // soglia
+        { 
             int a = 0;
 
             for(int i = 0; i < Nprodotti; i++)
@@ -65,23 +64,10 @@
                 if(soglia > Quantità[i])
                 {
                     a++;
+                    Console.WriteLine("I prodotti con quantità superiore alla soglia inserita sono " + prodotti[i]);
                 }
             }
-
-            Soglia = new string[a];
-
-            for (int i = 0; i < a; i++)
-            {
-                if (soglia > Quantità[i])
-                {
-                    Soglia[i] = prodotti[i];
-                }
-            }
-
-            return Soglia;
         }
- 
-
         static void Main(string[] args)
         {
             Console.WriteLine("Dimmi quanti prodotti vuoi inserire nel magazzino");
